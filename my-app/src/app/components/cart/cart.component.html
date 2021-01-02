@@ -1,0 +1,101 @@
+<app-header></app-header>
+<section class="section-content bg padding-y border-top">
+  <div class="container">
+
+    <div class="row">
+      <main class="col-sm-9">
+
+        <div class="card">
+          <table class="table table-hover shopping-cart-wrap">
+            <thead class="text-muted">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col" width="120">Quantity</th>
+                <th scope="col" width="120">Price</th>
+                <th scope="col" class="text-right" width="200">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cartProduct of cartProducts">
+                <td>
+                  <figure class="media">
+                    <div class="img-wrap"><img src="images/items/1.jpg" class="img-thumbnail img-sm"></div>
+                    <figcaption class="media-body">
+                      <h6 class="title text-truncate">{{cartProduct.product.name}}</h6>
+                      <dl class="dlist-inline small">
+                        <dt>Size: </dt>
+                        <dd>XXL</dd>
+                      </dl>
+                      <dl class="dlist-inline small">
+                        <dt>Color: </dt>
+                        <dd>Orange color</dd>
+                      </dl>
+                    </figcaption>
+                  </figure>
+                </td>
+                <td>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-dark btn-sm" (click)="this.decreaseQuantity(cartProduct)" ><i class="fa fa-minus"></i></button>
+                        </div>
+                        <input type="number" id="qty_input" class="form-control form-control-sm" [formControl]="quantityControl" [value]="cartProduct.quantity" min="1">
+                        <div class="input-group-append">
+                            <button class="btn btn-dark btn-sm" (click)="this.increaseQuantity(cartProduct)" ><i class="fa fa-plus"></i></button>
+                          </div>
+                    </div>
+                </td>
+                <td>
+                  <div class="price-wrap">
+                    <var class="price">USD {{productService.calculateProductTotalPrice(cartProduct)}}</var>
+                    <!-- <small class="text-muted">(USD5 each)</small> -->
+                  </div> <!-- price-wrap .// -->
+                </td>
+                <td class="text-right">
+                  <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-outline-success"
+                    data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+                  <a (click)="removeCartProduct(cartProduct)" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="button-group mb-3 ">
+            <button class="btn btn-primary" routerLink="/">Back To Shopping</button>
+          </div>
+        </div> <!-- card.// -->
+
+      </main> <!-- col.// -->
+      <aside class="col-sm-3">
+        <p class="alert alert-success">Add USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
+        <dl class="dlist-align">
+          <dt>Total price: </dt>
+          <dd class="text-right">USD {{productService.getTotalNonDiscountPrice()}}</dd>
+        </dl>
+        <dl class="dlist-align">
+          <dt>Discount:</dt>
+          <dd class="text-right">- USD {{productService.getDiscountAmount()}}</dd>
+        </dl>
+        <dl class="dlist-align h4">
+          <dt>Total:</dt>
+          <dd class="text-right"><strong>USD {{productService.getTotalPaymentPrice()}}</strong></dd>
+        </dl>
+        <hr>
+        <figure class="itemside mb-3">
+          <aside class="aside"><img src="images/icons/pay-visa.png"></aside>
+          <div class="text-wrap small text-muted">
+            Pay 84.78 AED ( Save 14.97 AED )
+            By using ADCB Cards
+          </div>
+        </figure>
+        <figure class="itemside mb-3">
+          <aside class="aside"> <img src="images/icons/pay-mastercard.png"> </aside>
+          <div class="text-wrap small text-muted">
+            Pay by MasterCard and Save 40%. <br>
+            Lorem ipsum dolor
+          </div>
+        </figure>
+
+      </aside> <!-- col.// -->
+    </div>
+
+  </div> <!-- container .//  -->
+</section>

@@ -1,0 +1,20 @@
+<div class="wrap">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Sign Up for Shopping</h2>
+    <input type="text" formControlName="username"  placeholder="Please Enter Your User Name">
+    <input type="email" formControlName="email"  placeholder="Please Enter Your Email">
+    <input type="text" formControlName="address"  placeholder="Enter a valid address">
+    <input type="password" formControlName="password"  placeholder="Enter a Password">
+    <input type="text" formControlName="fullname"  placeholder="Enter your name">
+    <input type="text" formControlName="phone"  placeholder="Enter your phone number">
+    <br>
+    <input type="checkbox" formControlName="check"> I Agree to The Terms And Condition
+    <br>
+    <input type="submit" [disabled]="!registerForm.valid" value="Sign in Now">
+  </form>
+
+  <p>
+      Form Status: {{ registerForm.status }}
+    </p>
+
+</div>

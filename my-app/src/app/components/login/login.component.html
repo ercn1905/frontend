@@ -1,0 +1,9 @@
+<form class="form-signin" [formGroup]="loginForm" (submit)="onSubmit()">
+    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <label for="text" class="sr-only">Username</label>
+    <input type="text" formControlName="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" formControlName="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
